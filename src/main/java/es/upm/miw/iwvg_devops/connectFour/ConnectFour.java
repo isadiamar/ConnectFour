@@ -10,7 +10,7 @@ public class ConnectFour {
 
         while (keepPlaying) {
             Game game = new Game();
-            game.play();
+            //  game.play();
 
             keepPlaying = checkKeepPlaying();
         }
