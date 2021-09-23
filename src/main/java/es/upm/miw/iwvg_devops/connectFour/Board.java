@@ -51,11 +51,16 @@ public class Board {
     }
 
     boolean isConnectFour(Color color) {
-        assert !color.isNull();
-
+        int TOKENS_TO_WIN = 4;
         List<Direction> directions = this.getDirections(color);
-
-
+        if (directions.size() < TOKENS_TO_WIN-1) {
+            return false;
+        }
+        for (int i = 0; i < directions.size() - 1; i++) {
+            if (directions.get(i) != directions.get(i + 1)) {
+                return false;
+            }
+        }
         return !directions.get(0).isNull();
     }
 

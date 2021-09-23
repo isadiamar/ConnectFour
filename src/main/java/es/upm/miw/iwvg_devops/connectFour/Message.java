@@ -3,7 +3,7 @@ package es.upm.miw.iwvg_devops.connectFour;
 enum Message {
 
     TITLE("--- TIC TAC TOE ---"),
-    HORIZONTAL_LINE("---------------"),
+    HORIZONTAL_LINE("-------------------------------"),
     VERTICAL_LINE(" | "),
     ENTER_COLUMN_TO_PUT("Player #player, enter a column to put a token:"),
     COORDINATE_TO_PUT("Coordinate to put"),
