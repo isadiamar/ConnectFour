@@ -1,7 +1,6 @@
 package es.upm.miw.iwvg_devops.connectFour.utils;
 
 public enum Direction {
-
     VERTICAL,
     HORIZONTAL,
     MAIN_DIAGONAL,

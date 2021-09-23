@@ -1,32 +1,29 @@
 package es.upm.miw.iwvg_devops.connectFour;
 
-import es.upm.miw.iwvg_devops.connectFour.models.Game;
-
-import java.util.Scanner;
-
 public class ConnectFour {
-    public static void main(String[] args) {
-        boolean keepPlaying = true;
+    private final Board board;
+    private final Turn turn;
 
-        while (keepPlaying) {
-            Game game = new Game();
-            //  game.play();
-
-            keepPlaying = checkKeepPlaying();
-        }
+    ConnectFour() {
+        this.board = new Board();
+        this.turn = new Turn(this.board);
     }
 
-    private static boolean checkKeepPlaying() {
-        boolean res = false;
+    public static void main(String[] args) {
+        new ConnectFour().play();
+    }
 
-        System.out.println("Do you want to start a new game? (y/n): ");
-        Scanner sc = new Scanner(System.in);
-        char userResponse = sc.next().charAt(0);
+    private void play() {
+        Message.TITLE.writeln();
+        this.board.write();
+        do {
+            this.turn.play();
+            this.board.write();
+        } while (!this.isConnectFour());
+        this.turn.writeWinner();
+    }
 
-        if (userResponse == 'y')
-            res = true;
-
-        return res;
+    private boolean isConnectFour() {
+        return this.board.isConnectFour(this.turn.getActiveColor());
     }
 }
-
