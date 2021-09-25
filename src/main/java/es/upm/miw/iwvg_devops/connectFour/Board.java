@@ -5,7 +5,6 @@ import es.upm.miw.iwvg_devops.connectFour.types.Error;
 import es.upm.miw.iwvg_devops.connectFour.types.Message;
 import es.upm.miw.iwvg_devops.connectFour.utils.Direction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
@@ -53,45 +52,39 @@ public class Board {
         return this.isOccupied(coordinate, Color.NULL);
     }
 
-    boolean isConnectFour(Color color) {
-        int TOKENS_TO_WIN = 4;
-        List<Direction> directions = this.getDirections(color);
-        if (directions.size() < TOKENS_TO_WIN-1) {
-            return false;
-        }
-        for (int i = 0; i < directions.size() - 1; i++) {
-            if (directions.get(i) != directions.get(i + 1)) {
-                return false;
-            }
-        }
-        return !directions.get(0).isNull();
+    public boolean isConnectFour(Color color) {
+
+        return checkDirection(color, Direction.VERTICAL) || checkDirection(color, Direction.HORIZONTAL) ||
+                checkDirection(color, Direction.MAIN_DIAGONAL) || checkDirection(color, Direction.INVERSE_DIAGONAL);
     }
 
-    private List<Direction> getDirections(Color color) {
-        assert !color.isNull();
+    public boolean checkDirection(Color color, Direction direction) {
+        boolean res = false;
 
-        List<Direction> directions = new ArrayList<>();
-        List<Coordinate> coordinates = this.getCoordinates(color);
-        if (!coordinates.isEmpty()) {
-            for (int i = 0; i < coordinates.size() - 1; i++) {
-                directions.add(coordinates.get(i).getDirection(coordinates.get(i + 1)));
-            }
-        }
-        return directions;
-    }
+        List<Direction> rowInit = List.of(Direction.MAIN_DIAGONAL);
+        List<Direction> row = List.of(Direction.VERTICAL, Direction.INVERSE_DIAGONAL);
+        List<Direction> column= List.of(Direction.HORIZONTAL, Direction.MAIN_DIAGONAL, Direction.INVERSE_DIAGONAL);
 
-    List<Coordinate> getCoordinates(Color color) {
-        assert !color.isNull();
-
-        List<Coordinate> coordinates = new ArrayList<>();
-        for (int i = 0; i < Coordinate.ROW_SIZE; i++) {
-            for (int j = 0; j < Coordinate.COLUMN_SIZE; j++) {
-                if (this.getColor(new Coordinate(i, j)) == color) {
-                    coordinates.add(new Coordinate(i, j));
+        for (int i = loopHelper(direction, rowInit); i < (this.colors.length - loopHelper(direction, row)); i++) {
+            for (int j = 0; j < this.colors[0].length - loopHelper(direction, column); j++) {
+                if (this.colors[i][j] == color &&
+                        this.colors[i + direction.getRow()][j + direction.getColumn()] == color &&
+                        this.colors[i + 2 * direction.getRow()][j + 2 * direction.getColumn()] == color &&
+                        this.colors[i + 3 * direction.getRow()][j + 3 * direction.getColumn()] == color) {
+                    res = true;
+                    break;
                 }
             }
         }
-        return coordinates;
+        return res;
+    }
+
+    private int loopHelper(Direction currentDirection, List<Direction> expectedDirections) {
+        int res = 0;
+        if (expectedDirections.contains(currentDirection)) {
+            res = 3;
+        }
+        return res;
     }
 
     void write() {
