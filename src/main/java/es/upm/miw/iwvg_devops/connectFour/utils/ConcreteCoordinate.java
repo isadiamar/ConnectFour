@@ -45,15 +45,6 @@ public class ConcreteCoordinate implements Coordinate {
         return this.row == ((ConcreteCoordinate) coordinate).row;
     }
 
-    protected void read(String title) {
-
-        System.out.println(title);
-        /*
-        this.row = console.readInt(ConcreteCoordinate.ROW) - 1;
-        this.column = console.readInt(ConcreteCoordinate.COLUMN) - 1;
-        */
-
-    }
 
     @Override
     public boolean inVertical(Coordinate coordinate) {

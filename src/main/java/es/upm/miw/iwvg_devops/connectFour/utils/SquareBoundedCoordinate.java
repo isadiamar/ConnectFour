@@ -1,6 +1,5 @@
 package es.upm.miw.iwvg_devops.connectFour.utils;
 
-import java.util.Random;
 
 public abstract class SquareBoundedCoordinate {
     private Coordinate adaptee;
@@ -9,7 +8,7 @@ public abstract class SquareBoundedCoordinate {
         this.adaptee = NullCoordinate.getInstance();
     }
 
-    public SquareBoundedCoordinate(int row, int column) {
+    protected SquareBoundedCoordinate(int row, int column) {
         this.adaptee = new ConcreteCoordinate(row, column);
 
         assert this.isValid();
@@ -47,29 +46,6 @@ public abstract class SquareBoundedCoordinate {
         ConcreteCoordinate coordinate = (ConcreteCoordinate) this.adaptee;
         return coordinate.getRow() + coordinate.getColumn() == this.getDimension() - 1;
     }
-
-    public void read(String message) {
-        assert message != null;
-
-        this.adaptee = new ConcreteCoordinate();
-        ConcreteCoordinate coordinate = (ConcreteCoordinate) this.adaptee;
-        boolean error;
-        do {
-            coordinate.read(message);
-            error = !this.isValid();
-            if (error) {
-                System.out.println(this.getErrorMessage());
-            }
-        } while (error);
-    }
-
-    protected abstract String getErrorMessage();
-
-    public void random() {
-        Random random = new Random(System.currentTimeMillis());
-        this.adaptee = new ConcreteCoordinate(random.nextInt(this.getDimension()), random.nextInt(this.getDimension()));
-    }
-
 
     public int getRow() {
         assert !this.adaptee.isNull();

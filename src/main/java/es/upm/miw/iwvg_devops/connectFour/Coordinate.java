@@ -1,6 +1,5 @@
 package es.upm.miw.iwvg_devops.connectFour;
 
-import es.upm.miw.iwvg_devops.connectFour.types.Error;
 import es.upm.miw.iwvg_devops.connectFour.utils.SquareBoundedCoordinate;
 
 public class Coordinate extends SquareBoundedCoordinate {
@@ -22,12 +21,6 @@ public class Coordinate extends SquareBoundedCoordinate {
     }
 
 
-    @Override
-    protected String getErrorMessage() {
-        return Error.WRONG_COORDINATES.toString();
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
