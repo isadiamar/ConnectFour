@@ -1,5 +1,7 @@
 package es.upm.miw.iwvg_devops.connectFour;
 
+import es.upm.miw.iwvg_devops.connectFour.types.Message;
+
 public class ConnectFour {
     private final Board board;
     private final Turn turn;

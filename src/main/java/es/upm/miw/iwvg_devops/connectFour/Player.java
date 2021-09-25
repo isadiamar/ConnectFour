@@ -1,5 +1,8 @@
 package es.upm.miw.iwvg_devops.connectFour;
 
+import es.upm.miw.iwvg_devops.connectFour.types.Color;
+import es.upm.miw.iwvg_devops.connectFour.types.Message;
+
 import java.util.Scanner;
 
 public class Player {

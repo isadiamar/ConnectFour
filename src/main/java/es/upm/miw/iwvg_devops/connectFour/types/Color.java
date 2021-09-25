@@ -1,6 +1,6 @@
-package es.upm.miw.iwvg_devops.connectFour;
+package es.upm.miw.iwvg_devops.connectFour.types;
 
-enum Color {
+public enum Color {
     X,
     O,
     NULL;
@@ -11,7 +11,7 @@ enum Color {
         return Color.values()[ordinal];
     }
 
-    void write() {
+    public void write() {
         String string = this.name();
         if (this.isNull()) {
             string = " ";
@@ -19,7 +19,7 @@ enum Color {
         System.out.print(string);
     }
 
-    boolean isNull() {
+    public boolean isNull() {
         return this == Color.NULL;
     }
 }

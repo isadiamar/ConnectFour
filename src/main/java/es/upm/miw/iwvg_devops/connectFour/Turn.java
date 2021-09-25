@@ -1,5 +1,7 @@
 package es.upm.miw.iwvg_devops.connectFour;
 
+import es.upm.miw.iwvg_devops.connectFour.types.Color;
+
 public class Turn {
     static final int NUMBER_PLAYERS = 2;
     private final Board board;

@@ -1,5 +1,6 @@
 package es.upm.miw.iwvg_devops.connectFour;
 
+import es.upm.miw.iwvg_devops.connectFour.types.Error;
 import es.upm.miw.iwvg_devops.connectFour.utils.SquareBoundedCoordinate;
 
 public class Coordinate extends SquareBoundedCoordinate {

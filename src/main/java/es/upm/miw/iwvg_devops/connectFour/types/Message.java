@@ -1,6 +1,6 @@
-package es.upm.miw.iwvg_devops.connectFour;
+package es.upm.miw.iwvg_devops.connectFour.types;
 
-enum Message {
+public enum Message {
 
     TITLE("--- TIC TAC TOE ---"),
     HORIZONTAL_LINE("-------------------------------"),
@@ -16,15 +16,15 @@ enum Message {
         this.message = message;
     }
 
-    void write() {
+    public void write() {
         System.out.print(this.message);
     }
 
-    void writeln() {
+    public void writeln() {
         System.out.println(this.message);
     }
 
-    void writeln(String player) {
+    public void writeln(String player) {
         assert this == Message.PLAYER_WIN;
 
         System.out.println(this.message.replaceAll("#player", "" + player));

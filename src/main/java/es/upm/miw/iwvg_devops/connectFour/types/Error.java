@@ -1,4 +1,4 @@
-package es.upm.miw.iwvg_devops.connectFour;
+package es.upm.miw.iwvg_devops.connectFour.types;
 
 public enum Error {
     NOT_EMPTY("The square is not empty"),
@@ -17,7 +17,7 @@ public enum Error {
         this.message = message;
     }
 
-    void writeln() {
+    public void writeln() {
         if (!this.isNull()) {
             System.out.println(this.message);
         }
