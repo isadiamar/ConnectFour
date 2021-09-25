@@ -22,12 +22,6 @@ public class Coordinate extends SquareBoundedCoordinate {
     }
 
 
-    @Override
-    protected String getErrorMessage() {
-        return Error.WRONG_COORDINATES.toString();
-    }
-
-
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
