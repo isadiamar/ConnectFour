@@ -1,6 +1,5 @@
 package es.upm.miw.iwvg_devops.connectFour.utils;
 
-import java.util.Random;
 
 public abstract class SquareBoundedCoordinate {
     private Coordinate adaptee;
