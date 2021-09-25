@@ -7,12 +7,19 @@ public enum Color {
 
     public static Color get(int ordinal) {
         assert ordinal >= 0 && ordinal < Color.NULL.ordinal();
+
         return Color.values()[ordinal];
     }
 
-
-    boolean isNull() {
-        return this == Color.NULL;
+    public void write() {
+        String string = this.name();
+        if (this.isNull()) {
+            string = " ";
+        }
+        System.out.print(string);
     }
 
+    public boolean isNull() {
+        return this == Color.NULL;
+    }
 }
