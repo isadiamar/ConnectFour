@@ -10,7 +10,7 @@ import java.util.List;
 public class Board {
     private final Color[][] colors;
 
-    Board() {
+    public Board() {
         this.colors = new Color[Coordinate.ROW_SIZE][Coordinate.COLUMN_SIZE];
         this.reset();
     }
@@ -63,7 +63,7 @@ public class Board {
 
         List<Direction> rowInit = List.of(Direction.MAIN_DIAGONAL);
         List<Direction> row = List.of(Direction.VERTICAL, Direction.INVERSE_DIAGONAL);
-        List<Direction> column= List.of(Direction.HORIZONTAL, Direction.MAIN_DIAGONAL, Direction.INVERSE_DIAGONAL);
+        List<Direction> column = List.of(Direction.HORIZONTAL, Direction.MAIN_DIAGONAL, Direction.INVERSE_DIAGONAL);
 
         for (int i = loopHelper(direction, rowInit); i < (this.colors.length - loopHelper(direction, row)); i++) {
             for (int j = 0; j < this.colors[0].length - loopHelper(direction, column); j++) {

@@ -48,20 +48,6 @@ public abstract class SquareBoundedCoordinate {
         return coordinate.getRow() + coordinate.getColumn() == this.getDimension() - 1;
     }
 
-    public void read(String message) {
-        assert message != null;
-
-        this.adaptee = new ConcreteCoordinate();
-        ConcreteCoordinate coordinate = (ConcreteCoordinate) this.adaptee;
-        boolean error;
-        do {
-            coordinate.read(message);
-            error = !this.isValid();
-            if (error) {
-                System.out.println(this.getErrorMessage());
-            }
-        } while (error);
-    }
 
     protected abstract String getErrorMessage();
 

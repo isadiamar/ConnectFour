@@ -27,7 +27,7 @@ public class Coordinate extends SquareBoundedCoordinate {
         return Error.WRONG_COORDINATES.toString();
     }
 
-    @Override
+
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

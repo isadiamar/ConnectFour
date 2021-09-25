@@ -20,7 +20,6 @@ public class ClosedInterval {
         return "[" + this.min + ", " + this.max + "]";
     }
 
-    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
