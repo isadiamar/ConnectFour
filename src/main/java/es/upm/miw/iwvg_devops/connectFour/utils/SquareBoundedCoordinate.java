@@ -2,7 +2,7 @@ package es.upm.miw.iwvg_devops.connectFour.utils;
 
 
 public abstract class SquareBoundedCoordinate {
-    private Coordinate adaptee;
+    private final Coordinate adaptee;
 
     protected SquareBoundedCoordinate() {
         this.adaptee = NullCoordinate.getInstance();

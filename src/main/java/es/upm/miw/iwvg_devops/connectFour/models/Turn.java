@@ -1,4 +1,4 @@
-package es.upm.miw.iwvg_devops.connectFour;
+package es.upm.miw.iwvg_devops.connectFour.models;
 
 import es.upm.miw.iwvg_devops.connectFour.types.Color;
 
@@ -8,7 +8,7 @@ public class Turn {
     private final Player[] players;
     private int activePlayer;
 
-    Turn(Board board) {
+    public Turn(Board board) {
         assert board != null;
         this.board = board;
         this.players = new Player[Turn.NUMBER_PLAYERS];
@@ -22,18 +22,27 @@ public class Turn {
         this.activePlayer = 0;
     }
 
-    void play() {
-        this.players[this.activePlayer].play();
+    void next() {
         if (!this.board.isConnectFour(this.getActiveColor())) {
             this.activePlayer = (this.activePlayer + 1) % Turn.NUMBER_PLAYERS;
         }
     }
 
-    void writeWinner() {
-        this.players[this.activePlayer].writeWinner();
-    }
-
-    Color getActiveColor() {
+    public Color getActiveColor() {
         return this.players[this.activePlayer].getColor();
     }
+
+    Player getActivePlayer() {
+        return this.players[this.activePlayer];
+    }
+
+    boolean areAllTokensOnBoard() {
+        return this.getActivePlayer().areAllTokensOnBoard();
+    }
+
+    void putToken(int column) {
+        this.getActivePlayer().putToken(column);
+    }
+
+
 }
