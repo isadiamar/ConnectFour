@@ -1,31 +1,25 @@
 package es.upm.miw.iwvg_devops.connectFour;
 
-import es.upm.miw.iwvg_devops.connectFour.types.Message;
+import es.upm.miw.iwvg_devops.connectFour.models.Game;
+import es.upm.miw.iwvg_devops.connectFour.views.View;
 
-public class ConnectFour {
-    private final Board board;
-    private final Turn turn;
 
-    ConnectFour() {
-        this.board = new Board();
-        this.turn = new Turn(this.board);
+public abstract class ConnectFour {
+
+    private final Game game;
+    private final View view;
+
+    protected ConnectFour() {
+        this.game = new Game();
+        this.view = this.createView(this.game);
     }
 
-    public static void main(String[] args) {
-        new ConnectFour().play();
-    }
+    protected abstract View createView(Game game);
 
-    private void play() {
-        Message.TITLE.writeln();
-        this.board.write();
+    protected void play() {
         do {
-            this.turn.play();
-            this.board.write();
-        } while (!this.isConnectFour());
-        this.turn.writeWinner();
-    }
-
-    private boolean isConnectFour() {
-        return this.board.isConnectFour(this.turn.getActiveColor());
+            this.view.start();
+            this.view.play();
+        } while (this.view.resume());
     }
 }

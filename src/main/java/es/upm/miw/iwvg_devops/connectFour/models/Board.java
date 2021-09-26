@@ -1,9 +1,10 @@
-package es.upm.miw.iwvg_devops.connectFour;
+package es.upm.miw.iwvg_devops.connectFour.models;
 
 import es.upm.miw.iwvg_devops.connectFour.types.Color;
+import es.upm.miw.iwvg_devops.connectFour.types.Coordinate;
 import es.upm.miw.iwvg_devops.connectFour.types.Error;
-import es.upm.miw.iwvg_devops.connectFour.types.Message;
 import es.upm.miw.iwvg_devops.connectFour.utils.Direction;
+import es.upm.miw.iwvg_devops.connectFour.views.console.ErrorView;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Board {
         assert column >= 0 && column <= Coordinate.COLUMN_SIZE;
 
         if (!colors[0][column].isNull()) {
-            Error.COLUMN_NOT_VALID.writeln();
+            new ErrorView().writeln(Error.COLUMN_NOT_VALID);
         }
 
         for (int i = Coordinate.ROW_SIZE - 1; i >= 0; i--) {
@@ -38,7 +39,7 @@ public class Board {
         }
     }
 
-    private Color getColor(Coordinate coordinate) {
+    Color getColor(Coordinate coordinate) {
         assert !coordinate.isNull();
 
         return this.colors[coordinate.getRow()][coordinate.getColumn()];
@@ -87,16 +88,4 @@ public class Board {
         return res;
     }
 
-    void write() {
-        Message.HORIZONTAL_LINE.writeln();
-        for (int i = 0; i < Coordinate.ROW_SIZE; i++) {
-            Message.VERTICAL_LINE.write();
-            for (int j = 0; j < Coordinate.COLUMN_SIZE; j++) {
-                this.getColor(new Coordinate(i, j)).write();
-                Message.VERTICAL_LINE.write();
-            }
-            System.out.println();
-        }
-        Message.HORIZONTAL_LINE.writeln();
-    }
 }

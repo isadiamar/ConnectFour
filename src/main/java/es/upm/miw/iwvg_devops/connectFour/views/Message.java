@@ -1,4 +1,4 @@
-package es.upm.miw.iwvg_devops.connectFour.types;
+package es.upm.miw.iwvg_devops.connectFour.views;
 
 public enum Message {
 
@@ -6,7 +6,8 @@ public enum Message {
     HORIZONTAL_LINE("-------------------------------"),
     VERTICAL_LINE(" | "),
     ENTER_COLUMN_TO_PUT("Player #player, enter a column to put a token:"),
-    COORDINATE_TO_PUT("Coordinate to put"),
+    RESUME("Do you want to continue"),
+    FULL_BOARD("The board is full, anybody has won."),
     PLAYER_WIN("#player player: You win!!! :-)");
 
 
@@ -16,19 +17,6 @@ public enum Message {
         this.message = message;
     }
 
-    public void write() {
-        System.out.print(this.message);
-    }
-
-    public void writeln() {
-        System.out.println(this.message);
-    }
-
-    public void writeln(String player) {
-        assert this == Message.PLAYER_WIN;
-
-        System.out.println(this.message.replaceAll("#player", "" + player));
-    }
 
     @Override
     public String toString() {
